@@ -204,31 +204,30 @@ if (input) {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      form.requestSubmit();
+      if (form) form.requestSubmit();
     }
   });
-}
 
-if (chat && scrollBtn) {
-  chat.addEventListener("scroll", () => {
-    scrollBtn.classList.toggle("show", !isNearBottom());
-  });
-  scrollBtn.addEventListener("click", () => scrollToBottom());
-}
-
-window.addEventListener("load", () => {
-  if (input) input.focus();
-});
-
-if (input) {
+  // Combined Focus Listener (Fixed & Cleaned up)
   input.addEventListener("focus", () => {
     requestAnimationFrame(() => scrollToBottom(false));
-  });
-  
-if (input) {
-  input.addEventListener("focus", () => {
     setTimeout(() => {
       scrollToBottom(true);
     }, 300);
   });
 }
+
+if (chat && scrollBtn) {
+  chat.addEventListener("scroll", () => {
+    if (typeof isNearBottom === "function") {
+      scrollBtn.classList.toggle("show", !isNearBottom());
+    }
+  });
+  scrollBtn.addEventListener("click", () => {
+    if (typeof scrollToBottom === "function") scrollToBottom();
+  });
+}
+
+window.addEventListener("load", () => {
+  if (input) input.focus();
+});
