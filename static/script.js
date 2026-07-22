@@ -7,7 +7,6 @@ const sendBtn = document.getElementById("sendBtn");
 const micBtn = document.getElementById("micBtn");
 const scrollBtn = document.getElementById("scrollBtn");
 
-// ---------- Theme Logic ----------
 function applyTheme(mode) {
   document.body.classList.toggle("dark", mode === "dark");
   document.body.classList.toggle("light", mode === "light");
@@ -32,7 +31,6 @@ if (clearBtn) {
   };
 }
 
-// ---------- Helpers ----------
 function timeNow() {
   return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
@@ -100,7 +98,6 @@ function speakText(text) {
   window.speechSynthesis.speak(utterance);
 }
 
-// ---------- Audio Recording Logic ----------
 let mediaRecorder = null;
 let audioChunks = [];
 let isRecording = false;
@@ -164,7 +161,6 @@ async function sendAudioToBackend(blob) {
   }
 }
 
-// ---------- Standard Chat Submit ----------
 if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -224,13 +220,11 @@ window.addEventListener("load", () => {
   if (input) input.focus();
 });
 
-// ---------- Mobile Keyboard Adjuster ----------
 if (input) {
   input.addEventListener("focus", () => {
     requestAnimationFrame(() => scrollToBottom(false));
   });
-}
-// Ensure smooth focus handling when clicking input
+  
 if (input) {
   input.addEventListener("focus", () => {
     setTimeout(() => {
