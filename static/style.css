@@ -350,7 +350,6 @@ button[type="submit"].loading .spinner-icon{ display:block; }
 .dark .user{ background:#5ce1e6; color:#04222a; }
 .dark .user-row .avatar{ background:#232838; color:#eef1f6; }
 
-/* Mic Button Styles */
 .action-btn{
   background: var(--panel-2);
   border: 1px solid var(--border);
