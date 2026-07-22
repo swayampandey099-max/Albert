@@ -4,7 +4,6 @@ from dotenv import load_dotenv, find_dotenv
 from flask import Flask, render_template, request, jsonify, session
 from groq import Groq
 
-# Load .env variables cleanly
 load_dotenv(find_dotenv(), override=True)
 
 app = Flask(__name__)
